@@ -1,0 +1,18 @@
+// useful commands
+
+// create network attached container
+docker run -it --rm --network=msa-docker-compose_default busybox sh
+
+// check if service is responding
+wget -O- <URL>
+
+
+TODO:
+- SEQ
+- POLLY
+- Prometheus
+- open telemetry
+
+// Polly setup:
+https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly
+https://github.com/App-vNext/Polly.Extensions.Http/blob/master/README.md

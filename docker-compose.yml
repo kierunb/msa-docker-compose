@@ -1,0 +1,38 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  backend:
+    image: backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    volumes:
+      - volume01:/logs
+    ports:
+    - 5000
+  frontend:
+    image: frontend
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    volumes:
+    - volume01:/logs
+    ports:
+      - 8881:5001
+  redis:
+    image: redis
+    ports:
+      - 6379
+    restart: always
+  seq:
+    image: datalust/seq:latest
+    ports:
+      - 8080:80
+      - 5341
+    environment:
+      - ACCEPT_EULA=Y
+
+volumes:
+  volume01: {}
